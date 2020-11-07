@@ -1,0 +1,13 @@
+<?xml version = "1.0"?>
+<!-- This file would be used to store more parameters -->
+<parameters>
+   <browser>
+      <headless>false</headless> <!-- ADD HEADLESS MODE -->
+      <profile>chrome</profile> <!-- Accepts: 'firefox' | 'chrome' -->  <!-- ADD EDGE + DRIVER -->
+      <window_width>1200</window_width>
+      <window_height>1200</window_height>
+      <fullscreen>false</fullscreen> <!-- Accepts: 'true' | 'false' -->
+      <screenshot_errors>false</screenshot_errors> <!-- ADD ERRORS SCREENSHOTING -->
+   </browser>
+</parameters>
+

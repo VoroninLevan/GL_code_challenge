@@ -3,17 +3,22 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import localdriver.LocalDriver;
 import org.junit.Assert;
+
+import org.openqa.selenium.WebDriver;
 import page.WebDisclosurePage;
-import test.BaseWebTest;
+
+
 
 import java.util.ArrayList;
 
-public class CountryFilterSteps extends BaseWebTest {
+public class CountryFilterSteps {
 
     private WebDisclosurePage webDisclosurePage;
     private ArrayList<String> countryNames;
     private String mCountry;
+    private WebDriver mDriver = LocalDriver.getInstance().getDriver();
 
     @Given("user is on the landing page for WD site")
     public void user_is_on_the_landing_page_for_wd_site() {

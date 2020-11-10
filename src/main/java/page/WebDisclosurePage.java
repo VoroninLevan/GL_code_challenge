@@ -65,6 +65,7 @@ public class WebDisclosurePage extends BaseWebPage {
      */
     public void navigateToWD () {
         mDriver.get("https://viewpoint.glasslewis.com/WD/?siteId=DemoClient");
+        waitForTableToLoad();
     }
 
     /**
@@ -90,6 +91,7 @@ public class WebDisclosurePage extends BaseWebPage {
      */
     public void triggerNextPage () {
         clickByXPath("//div[@data-role='pager']//a[3]");
+        waitForLoad();
     }
 
     /**
@@ -117,5 +119,12 @@ public class WebDisclosurePage extends BaseWebPage {
     private void waitForLoad () {
         waitForVisibilityOfElementByXpath(spinnerXPath);
         waitForInvisibilityOfElementByXpath(spinnerXPath);
+    }
+
+    /**
+     * Waits for table to load
+     */
+    private void waitForTableToLoad () {
+        waitForVisibilityOfElementByXpath("//div[contains(@class, 'grid-content')]//table[@role='grid']");
     }
 }

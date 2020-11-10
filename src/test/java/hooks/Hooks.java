@@ -7,22 +7,24 @@ import localdriver.LocalDriver;
 import provider.Driver;
 import provider.ParameterReader;
 import test.BaseWebTest;
+import util.ScreenSaver;
 
 public class Hooks extends BaseWebTest {
+
+    private boolean mHeadless;
 
     @Before
     public void beforeMethod (){
         ParameterReader reader = new ParameterReader();
         Driver driver = new Driver(reader);
         mDriver = driver.getDriver();
+        mHeadless = driver.getHeadless();
         LocalDriver.getInstance().setDriver(mDriver);
     }
 
     @After
     public void afterMethod(Scenario scenario) {
-        if (scenario.isFailed()){
-            // TODO - implement screenshoting
-        }
+        if (scenario.isFailed() && !mHeadless) ScreenSaver.takeScreenshot(mDriver, scenario);
         mDriver.close();
     }
 }

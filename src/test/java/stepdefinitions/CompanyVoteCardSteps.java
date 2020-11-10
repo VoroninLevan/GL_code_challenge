@@ -34,6 +34,8 @@ public class CompanyVoteCardSteps {
 
     @Then("{string} should appear in the top banner")
     public void should_appear_in_the_top_banner(String companyName) {
-        Assert.assertTrue("", voteCardPage.getHeader().contains(companyName));
+        String header = voteCardPage.getHeader();
+        Assert.assertTrue("There is a wrong header on the card: " + header + "\nExpected: " + companyName,
+                header.contains(companyName));
     }
 }

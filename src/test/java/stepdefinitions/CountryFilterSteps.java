@@ -26,32 +26,33 @@ public class CountryFilterSteps {
         webDisclosurePage.navigateToWD();
     }
 
-    @Given("the Country filter is available")
+    @Given("The Country filter is available")
     public void the_country_filter_is_available() {
-        Assert.assertTrue("", webDisclosurePage.isCountryFilterAvailable());
+        Assert.assertTrue("Country filter is not available", webDisclosurePage.isCountryFilterAvailable());
     }
 
-    @When("user selects {string} from the Country filter list on left panel")
+    @When("User selects {string} from the Country filter list on left panel")
     public void user_selects_from_the_country_filter_list_on_left_panel(String country) {
         webDisclosurePage.searchCountryFilter(country);
         webDisclosurePage.selectCountryFilter(country);
     }
 
-    @When("clicks on Update button for the country filter list")
+    @When("Clicks on Update button for the country filter list")
     public void clicks_on_update_button_for_the_country_filter_list() {
         webDisclosurePage.updateCountryFilter();
     }
 
-    @Then("the grid displays all meetings that are associated with the country {string}")
+    @Then("The grid displays all meetings that are associated with the country {string}")
     public void the_grid_displays_all_meetings_that_are_associated_with_the_country(String country) {
         countryNames = webDisclosurePage.getCountriesFromTable();
         mCountry = country;
     }
 
-    @Then("no meetings associated with any other country appear on the list")
+    @Then("No meetings associated with any other country appear on the list")
     public void no_meetings_associated_with_any_other_country_appear_on_the_list() {
         for (String currentName : countryNames){
-            Assert.assertTrue("", currentName.contains(mCountry));
+            Assert.assertTrue("Other meetings not associated with " + mCountry + " are displayed",
+                    currentName.contains(mCountry));
         }
     }
 }
